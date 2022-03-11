@@ -1,0 +1,206 @@
+body .blogWrapper {
+  max-width: 500px;
+  padding: 17px 15px !important;
+  margin: 20px 0;
+  border: 1px solid #30303030;
+}
+body .blogWrapper div.blog_desc .created-at {
+  font-size: 12px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  display: block;
+  text-align: right;
+}
+body .blogWrapper div.blog_Display {
+  margin: 10px 0 20px;
+  padding: 10px;
+  border: 1px solid #e9e9e9;
+  background: #494949;
+  color: white;
+}
+body .blogWrapper div.blog_Display p {
+  margin: 0;
+}
+body .blogWrapper .categoryDiv {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 600px;
+}
+body .blogWrapper .categoryDiv span {
+  display: inline-block;
+  margin: 3px 5px 3px 0;
+  font-size: 15px;
+  height: 23px;
+  line-height: 23px;
+}
+body .blogWrapper .categoryDiv span.categoryTitle {
+  margin-right: 12px;
+}
+body .blogWrapper .categoryDiv span.category {
+  padding: 0 10px;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.3s linear;
+}
+body .blogWrapper .categoryDiv span.category.news {
+  background: #fff9a0;
+}
+body .blogWrapper .categoryDiv span.category.education {
+  background: #b457ff;
+}
+body .blogWrapper .categoryDiv span.category.social {
+  background: #acb4ff;
+}
+body .blogWrapper .categoryDiv span.category.sport {
+  background: #6aff6a;
+}
+body .blogWrapper .categoryDiv span.category.crime {
+  background: #ffa0a0;
+}
+body .blogWrapper .categoryDiv span.category.business {
+  background: #a0fffa;
+}
+body .blogWrapper .categoryDiv span.category.fashion {
+  background: #c8c8c8;
+}
+body .blogWrapper .categoryDiv span.category::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0%;
+  background: #494949;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.2s linear;
+}
+body .blogWrapper .categoryDiv span.category:hover {
+  color: white;
+}
+body .blogWrapper .categoryDiv span.category:hover::before {
+  height: 100%;
+}
+body .blogWrapper .copyBtn,
+body .blogWrapper .dltBtn.dltBlog {
+  padding: 0px 10px;
+  height: 28px;
+  line-height: 28px;
+  color: #303030;
+  font-size: 14px;
+  border: 1px solid #303030;
+}
+body .blogWrapper .copyBtn:hover,
+body .blogWrapper .dltBtn.dltBlog:hover {
+  box-shadow: inset 0 0 5px #8a8a8a;
+}
+body .blogWrapper .blog_comment_btn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #303030;
+  font-size: 20px;
+}
+body .blogWrapper .like #likeBlog + .likeBtns .likedIcon {
+  display: none;
+}
+body .blogWrapper .like #likeBlog:checked + .likeBtns .likedIcon,
+body .blogWrapper .like input.is_liked + .likeBtns .likedIcon {
+  display: block;
+}
+body .blogWrapper .like input#likeBlog:checked + .likeBtns .notlikedIcon {
+  display: none;
+}
+body .blogWrapper .blog_comment_box {
+  border-top: 2px solid #f1f1f1;
+  padding: 10px 0 25px 0;
+  border-bottom: 3px solid #f1f1f1;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  position: relative;
+}
+body .blogWrapper .blog_comment_box .comment-not-valid {
+  background: #f1f1f1;
+  color: #303030;
+  text-align: center;
+  padding: 0 10px;
+  cursor: not-allowed;
+}
+body .blogWrapper .blog_comment_box .add_comment_box {
+  display: flex;
+  height: 40px;
+  justify-content: flex-end;
+}
+body .blogWrapper .blog_comment_box .add_comment_box .user_profile {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  margin-right: 10px;
+}
+body .blogWrapper .blog_comment_box .add_comment_box .comment_form_div {
+  flex-grow: 1;
+  position: relative;
+}
+body .blogWrapper .blog_comment_box .add_comment_box .comment_form_div form {
+  display: flex;
+  height: 40px;
+  justify-content: flex-end;
+}
+body .blogWrapper .blog_comment_box .add_comment_box .comment_form_div form input {
+  flex-grow: 1;
+  border-bottom: 1px solid #f1f1f1;
+}
+body .blogWrapper .blog_comment_box .add_comment_box .comment_form_div form .send_Comment_Btn.customBtn {
+  line-height: 40px;
+  margin-bottom: 0;
+}
+body .blogWrapper .blog_comment_box .add_comment_box .comment_form_div form .send_Comment_Btn.customBtn:hover + .anim::before {
+  width: 100%;
+}
+body .blogWrapper .blog_comment_box .add_comment_box .comment_form_div form .anim::before {
+  content: "";
+  position: absolute;
+  background: #303030;
+  height: 1px;
+  width: 0;
+  bottom: 0;
+  right: 0;
+  transition: all 0.4s linear;
+}
+body .blogWrapper .blog_comment_box .toggle_comment_box_btn {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  background: #f1f1f1;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  font-size: 16px;
+}
+body .blogWrapper .blog_comment_box .comments_box {
+  max-height: 350px;
+  padding: 15px 10px;
+  overflow-y: scroll;
+  margin: 5px 0;
+}
+body .blogWrapper .blog_comment_box .comments_box .user_comment {
+  border: 1px solid #f1f1f1;
+  margin: 5px 0;
+  padding: 10px;
+  box-shadow: inset 0 2px 2px #f1f1f1;
+}
+body .blogWrapper .blog_comment_box .comments_box .user_comment ._username {
+  font-size: 16px;
+}
+body .blogWrapper .blog_comment_box .comments_box .user_comment ._text {
+  font-size: 18px;
+}

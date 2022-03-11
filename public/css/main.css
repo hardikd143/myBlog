@@ -1,0 +1,237 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.h-35 {
+  height: 35px !important;
+}
+
+.h-40 {
+  height: 40px !important;
+}
+
+.mt-20 {
+  margin-top: 20px !important;
+}
+
+.w-40 {
+  width: 40px !important;
+}
+
+.lh-40 {
+  line-height: 40px !important;
+}
+
+::-moz-selection {
+  background: #303030 !important;
+  color: white !important;
+}
+
+::selection {
+  background: #303030 !important;
+  color: white !important;
+}
+
+.copiedBG {
+  background: #494949 !important;
+  color: white !important;
+}
+
+._box_shadow {
+  box-shadow: 0 3px 3px #f1f1f1, inset 0 3px 3px #f1f1f1;
+}
+
+.text-dark {
+  color: #303030 !important;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  line-height: 1.5;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+}
+
+[hidden] {
+  display: none;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+  border: 0 solid #e2e8f0;
+}
+
+a {
+  color: #303030;
+  text-decoration: none;
+}
+a :hover {
+  color: #303030;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: none;
+}
+button :focus {
+  outline: none !important;
+}
+
+input,
+textarea {
+  outline: none !important;
+}
+input:focus,
+textarea:focus {
+  outline: none !important;
+}
+
+body {
+  background: #fff;
+}
+body footer {
+  background: #eee;
+  padding: 15px 20px;
+  text-align: center;
+  color: #303030;
+}
+body footer p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.customShadow {
+  box-shadow: 0 0 10px rgba(167, 167, 167, 0.2);
+}
+
+.customBtn {
+  outline: none;
+  background: white;
+  padding: 0px 20px;
+  line-height: 35px;
+  height: 35px;
+  color: #303030;
+  text-decoration: none;
+  position: relative;
+  margin: auto;
+  display: inline-block;
+  box-shadow: inset 0 0 5px rgba(102, 102, 102, 0.2);
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.4s linear;
+}
+.customBtn:hover {
+  color: #fff;
+}
+.customBtn::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 130%;
+  top: 0;
+  left: 0;
+  background: #303030;
+  transition: all 0.4s linear;
+  transform: translateX(-117%) translateY(-5px) skewX(50deg);
+  z-index: -1;
+}
+.customBtn:hover::before {
+  transform: translateX(-25%) translateY(-5px) skewX(50deg);
+}
+
+input,
+input:focus {
+  box-shadow: none !important;
+}
+
+.customRadio_Div {
+  padding: 4px 10px;
+  margin: 5px 5px 5px 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 3px #f1f1f1, inset 0 2px 2px #f1f1f1;
+  transition: all 0.3s linear;
+  display: flex;
+  align-items: center;
+}
+.customRadio_Div:hover {
+  border-color: #303030;
+}
+.customRadio_Div input[type=radio] {
+  display: none;
+}
+.customRadio_Div input[type=radio]:checked + .customRadio::before {
+  top: 2px !important;
+}
+.customRadio_Div span {
+  margin-left: 6px;
+}
+.customRadio_Div .customRadio {
+  position: relative;
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  box-shadow: 0 0 2px #000000;
+  overflow: hidden;
+}
+.customRadio_Div .customRadio::before {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  top: 2px;
+  top: -100%;
+  left: 2px;
+  background: #585858;
+  border-radius: 50%;
+  transition: all 0.1s linear;
+}
+
+.customCheckbox {
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  box-shadow: inset 0 0 2px #000000;
+}
+.customCheckbox::before {
+  content: " ";
+  position: absolute;
+  background: #303030;
+  transform: rotate(45deg);
+  top: 12px;
+  left: 3px;
+  width: 0px;
+  transition: all 0.1s linear;
+  height: 2px;
+}
+.customCheckbox::after {
+  content: "";
+  position: absolute;
+  transform: rotate(-45deg);
+  background: #000000;
+  top: 10px;
+  left: 5px;
+  height: 2px;
+  width: 0;
+  transition: all 0.1s linear;
+}

@@ -1,0 +1,39 @@
+body {
+    form {
+        textarea {
+            outline: none !important;
+            padding: 15px 10px;
+            box-shadow: 0 3px 3px #f1f1f1, inset 0 3px 3px #f1f1f1;
+            margin: 0 0 20px 0;
+            width: 100%;
+            max-width: 500px;
+
+            &:focus {
+                outline: none !important;
+            }
+        }
+
+        
+        input[type="submit"] {
+            margin: 10px 0 20px ;
+            border: 2px solid #303030;
+            transition: all 0.1s linear;
+            &:hover {
+                background: #303030;
+            }
+        }
+        .Radio_inputGroup {
+            display: flex;
+            flex-flow: row wrap;
+
+            label {
+                box-shadow: 0 3px 3px #d1d1d1;
+                padding: 5px 15px;
+                margin: 5px;
+                // input[type="radio"]{
+                //     display: none;
+                // }
+            }
+        }
+    }
+}
