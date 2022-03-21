@@ -131,6 +131,7 @@ body .blogWrapper .blog_comment_box .comment-not-valid {
   text-align: center;
   padding: 0 10px;
   cursor: not-allowed;
+  font-size: 13px;
 }
 body .blogWrapper .blog_comment_box .add_comment_box {
   display: flex;

@@ -24,6 +24,7 @@ Route::post('/blogs', 'App\Http\Controllers\BlogController@postblog')->middlewar
 Route::get('/blogs', 'App\Http\Controllers\BlogController@showBlogs')->middleware('auth');
 Route::post('/home/{username}','App\Http\Controllers\BlogController@deleteblog')->middleware('auth');
 Route::post('/blogs/add-comment','App\Http\Controllers\BlogController@addComment');
+Route::post('/blogs/save-blog','App\Http\Controllers\BlogController@saveblog');
 Route::get('/home/{username}','App\Http\Controllers\ProfileController@profile')->middleware('auth');
 Route::get('/{username}/edit-profile','App\Http\Controllers\ProfileController@editProfile')->middleware('auth');
 Route::put('/home/{username}','App\Http\Controllers\ProfileController@updateProfile')->middleware('auth');

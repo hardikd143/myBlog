@@ -235,3 +235,19 @@ input:focus {
   width: 0;
   transition: all 0.1s linear;
 }
+
+.customSmallBtn {
+  padding: 0px 10px;
+  height: 28px;
+  line-height: 28px;
+  color: #303030;
+  font-size: 14px;
+  border: 1px solid #303030;
+}
+.customSmallBtn._savedBlog {
+  background: #303030;
+  color: white;
+}
+.customSmallBtn:hover {
+  box-shadow: inset 0 0 5px #8a8a8a;
+}

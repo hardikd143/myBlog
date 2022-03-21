@@ -21,26 +21,54 @@
     <div class="blog_Display">
         <p class="blogText">{{$b->blogText}}</p>
     </div>
-    <div class="categoryDiv">
-        <span class="categoryTitle">category : </span>
-        <span class="category {{$b->blogcategory}}">{{$b->blogcategory}}</span>
+    <div class="categoryDiv justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <span class="categoryTitle">category : </span>
+            <span class="category {{$b->blogcategory}}">{{$b->blogcategory}}</span>
+        </div>
+        <div>
+            {!! Form::open(['class'=>'saveBlog-form','method' => 'post','action'=>['App\Http\Controllers\BlogController@saveblog']]) !!}
+                @csrf
+
+            <?php $sb = 0; ?>
+            @foreach($saveblog as $sblog)
+            @if($b->blogID == $sblog->blogid && $sblog->username == Auth::user()->username)
+            <?php $sb++; ?>
+            <label class="customSmallBtn _savedBlog" for="saveBlog_{{$b->blogID}}">saved</label>
+            <input type="checkbox" name="saveblogCheck" id="saveBlog_{{$b->blogID}}" onchange="this.form.submit()" checked> 
+            @break
+            @endif
+            @endforeach
+            @if($sb == 0)
+            <label class="customSmallBtn " for="saveBlog_{{$b->blogID}}">save</label>
+            <input type="checkbox" name="saveblogCheck" id="saveBlog_{{$b->blogID}}" onchange="this.form.submit()"> 
+            @endif
+            <input type="hidden" name="username" value="{{Auth::user()->username}}">
+            {!! Form::hidden('blogid', $value =$b->blogID ) !!}
+            </form>
+        </div>
     </div>
-    <!-- <div class="blog_stats mt-20">
-        <button class="blog_comment_btn">
-            <i class="far fa-comment"></i>
-        </button>
-    </div> -->
+
     <div class="blog_comment_box ">
-        <?php $i = 0; ?>
+
+        <?php $i = 0;
+        $totalComment = 0; ?>
         @foreach($comment as $cmnt)
         @if($b->blogID == $cmnt["blogid"])
+        <?php $totalComment++; ?>
         @if($cmnt['username'] == Auth::user()->username )
         <?php $i++; ?>
         @endif
         @endif
         @endforeach
         <!-- <span><?php echo $i; ?> is your total comments on this post </span> -->
+        <!-- <span><?php echo $totalComment; ?> total comments  </span> -->
         <!-- <h4>Comments</h4> -->
+        @if($totalComment == 50)
+        <div class="comment-not-valid">
+            <span class="d-block h-40 lh-40">Maximum limit for total comments on this blog has been reached</span>
+        </div>
+        @else
         @if($i >= 5)
         <div class="comment-not-valid">
             <span class="d-block h-40 lh-40">Can't comment on this blog now</span>
@@ -59,14 +87,16 @@
                 {!! Form::hidden('blogid', $value =$b->blogID ) !!}
                 <!-- {!! Form::hidden('username', $value =Auth::user()->username)!!} -->
                 <input type="hidden" name="username" value="{{Auth::user()->username}}">
-                <input type="text" name="comment" placeholder="Add a comment" id="comment" data-user="{{Auth::user()->username}}" autocomplete="off">
+                <input type="text" name="comment" placeholder="Add a comment" id="comment" autocomplete="off">
                 <button type="submit" class="customBtn send_Comment_Btn">Send</button>
                 <div class="anim"></div>
                 </form>
             </div>
         </div>
         @endif
-        
+        @endif
+
+
         <button class="toggle_comment_box_btn fas fa-chevron-down"></button>
         <div class="comments_box ">
             @foreach($comment as $cmnt)

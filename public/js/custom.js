@@ -56,6 +56,28 @@ $(document).ready(function () {
     // // Math.random().toString(32).slice(2)
     //     $('#password').val(pass);
     // })
+
+
+
+    $(".saveBlog-form").on("submit",function(e){
+        e.preventDefault();
+        let form = $(this);
+        function loadData_save() {
+            let addr = window.location.href;
+            $("body").load(addr);
+            console.clear();
+        }
+        $.ajax({
+            url: form.prop("action"),
+            method: form.prop("method"),
+            data: form.serialize(),
+            dataType: "json",
+            success: function (msg) {
+                // console.log("Hell");
+                // loadData_save();
+            },
+        });
+    })
     $(".addcomment-form").on("submit", function (e) {
         e.preventDefault();
         let form = $(this);
@@ -65,10 +87,10 @@ $(document).ready(function () {
             data: form.serialize(),
             dataType: "json",
             success: function (msg) {
-                loadData();
+                loadData_comment();
             },
         });
-        function loadData() {
+        function loadData_comment() {
             let addr = window.location.href;
             $("body").load(addr);
             console.clear();

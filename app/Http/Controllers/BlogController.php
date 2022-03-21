@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\blog;
 use App\Models\comments;
 use App\Models\User;
+use App\Models\saveblog;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\Console\Input\Input;
 use Symfony\Component\VarDumper\Cloner\Data;
 
 class BlogController extends Controller
@@ -35,7 +37,8 @@ class BlogController extends Controller
     {
         $blog = blog::all()->reverse();
         $comment = comments::all();
-        return view('/blogs',['blog' => $blog,'comment'=>$comment] );
+        $savedblog = saveblog::all();
+        return view('/blogs', ['blog' => $blog, 'comment' => $comment, 'saveblog' => $savedblog]);
     }
     public function postblog()
     {
@@ -44,20 +47,21 @@ class BlogController extends Controller
         $crblog->blogText = request('blogtext');
         $crblog->blogID = Str::random(8);
         $crblog->blogcategory = request('category');
-        $crblog->likedby = [request('username')];
-        
+
         $crblog->save();
         // return view('blogs');
         $blog = blog::all()->reverse();
         // $blog = blog::al;
         $comment = comments::all();
-        return view('/blogs',['blog' => $blog,'comment'=>$comment] );
+        $savedblog = saveblog::all();
+        return view('/blogs', ['blog' => $blog, 'comment' => $comment, 'saveblog' => $savedblog]);
     }
     public function getBlog()
     {
         $blog = blog::all()->reverse();
         $comment = comments::all();
-        return view('/blogs',['blog' => $blog,'comment'=>$comment] );
+        $savedblog = saveblog::all();
+        return view('/blogs', ['blog' => $blog, 'comment' => $comment, 'saveblog' => $savedblog]);
     }
     public function deleteblog($username)
     {
@@ -73,14 +77,34 @@ class BlogController extends Controller
 
         $uname = request('username');
         $cmt = request('comment');
-        $bid =request('blogid');
+        $bid = request('blogid');
         $comment->username = $uname;
         $comment->comment = $cmt;
         $comment->blogid = $bid;
         $comment->save();
         $comment = comments::all()->first();
-        // return redirect('/blogs')->with('blog',$blog)->with('comment',$comment);
-        return response()->json(['blogid'=>$bid,'comment'=>$cmt,'username'=>$uname]);   
+        // return redirect('/blogs')->with('comment',$comment);
+        return response()->json(['blogid' => $bid, 'comment' => $cmt, 'username' => $uname]);
     }
-  
+    public function saveblog()
+    {
+        $saveblog = new saveblog();
+        $uname = request('username');
+        $bid = request('blogid');
+        // dd($bid);
+        $check = request('saveblogCheck');
+        // dd(request('saveblogCheck'));
+        if ($check == null) {
+            DB::table('saveblog')->where('blogId', $bid)->where('username', $uname)->delete();
+        } else {
+            $saveblog->blogid = $bid;
+            $saveblog->username = $uname;
+            $saveblog->save();
+        }
+        $blog = blog::all()->reverse();
+        $comment = comments::all();
+        $savedblog = saveblog::all();
+        // return redirect('/blogs');
+        return response()->json(['blogid' => $bid,'username' => $uname]);
+    }
 }
